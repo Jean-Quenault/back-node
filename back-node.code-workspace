@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Cheat-sheet"
+		},
+		{
+			"path": "../front-react"
+		}
+	],
+	"settings": {}
+}
