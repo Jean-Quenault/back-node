@@ -29,7 +29,7 @@ const pool = new Pool({
 });
 
 
-app.post('/users', (request, response) => {
+app.post('/', (request, response) => {
   const { ip, navigateurs, os } = request.body;
 
   pool.query(
@@ -44,7 +44,7 @@ app.post('/users', (request, response) => {
   );
 });
 
-app.get('/users', (request, response) => {
+app.get('/', (request, response) => {
   pool.query('SELECT * FROM app_user ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error;
