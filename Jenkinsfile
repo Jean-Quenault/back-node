@@ -24,7 +24,7 @@ pipeline {
         stage ('Git clone') {
             steps {
                 script {
-                    git branch: 'main', credentialsId: 'Token', url: 'https://github.com/Jean-Quenault/front-react'
+                    git branch: 'main', credentialsId: 'Token', url: 'https://github.com/Jean-Quenault/back-node'
                 }
             }
         }
