@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = 4000
 
+// Middleware for enabling Cross-Origin Resource Sharing (CORS)
+
 const cors = require('cors');
 
 app.use(cors());
@@ -14,6 +16,7 @@ app.use(
   })
 )
 
+// Creating a new pool of connections for the PostgreSQL database
 
 const pool = new Pool({
   user: 'userdb',
@@ -23,11 +26,11 @@ const pool = new Pool({
   port: 5432,
   ssl: {
     rejectUnauthorized: false
-    // This is an SSL configuration. 
-    // Setting 'rejectUnauthorized' to false allows the connection even if the SSL certificate cannot be validated. 
   }
 });
 
+
+// Endpoint for creating a new user
 
 app.post('/users', (request, response) => {
   const { ip, navigateurs, os } = request.body;
@@ -44,6 +47,9 @@ app.post('/users', (request, response) => {
   );
 });
 
+
+// Endpoint for retrieving all users
+
 app.get('/users', (request, response) => {
   pool.query('SELECT * FROM app_user ORDER BY id ASC', (error, results) => {
     if (error) {
@@ -53,11 +59,12 @@ app.get('/users', (request, response) => {
   });
 });
 
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// Endpoint for the root URL, sending a welcome message in case of debbuging
 
 app.get('/', (request, response) => {
   response.json({ info: 'Bienvenue sur le Jean backend'})
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
 })
