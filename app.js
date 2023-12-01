@@ -7,8 +7,11 @@ const port = 4000
 const cors = require('cors');
 
 app.use(cors({
-  origin: 'https://front.jeanops.net'
+  origin: 'https://front.jeanops.net',
+  methods: ['GET', 'POST', 'PUT', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 
 app.use(
   bodyParser.urlencoded({
