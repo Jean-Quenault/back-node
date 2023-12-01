@@ -5,7 +5,6 @@ const app = express()
 const port = 4000
 
 const cors = require('cors');
-app.use(cors());
 
 app.use(cors({
   origin: 'https://front.jeanops.net'
